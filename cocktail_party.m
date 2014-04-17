@@ -2,9 +2,8 @@
 [x2, Fs2] = wavread('~/Academics/Sem4/EE214/source4.wav');
 m = size(x1,1);
 n = 2;
-%A = randn(n, n);
-x = A*x;
-
+A = randn(n, n);
+x = A*[x1';x2'];
 c = cov(x');
 sq = inv(sqrtm(c));
 mx = mean(x, 2)';
