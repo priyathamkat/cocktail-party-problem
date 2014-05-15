@@ -1,9 +1,9 @@
-[x1, Fs1] = wavread('~/Academics/Sem4/EE214/source2.wav');
-[x2, Fs2] = wavread('~/Academics/Sem4/EE214/source4.wav');
+[x1, Fs1] = wavread('mic1.wav');
+[x2, Fs2] = wavread('mic2.wav');
+
 m = size(x1,1);
 n = 2;
-A = randn(n, n);
-x = A*[x1';x2'];
+x = [x1';x2'];
 c = cov(x');
 sq = inv(sqrtm(c));
 mx = mean(x, 2)';
@@ -32,3 +32,12 @@ while abs(abs(w0'*w2)-1) > 0.001
     w2 = w2 - w2'*w1*w1;
     w2 = w2/norm(w2, 2);
 end
+
+
+w = [w1 w2];
+s = w*x;
+s1 = s(1,:);
+s2 = s(2,:);
+
+wavwrite( s1', 'out1.wav' );
+wavwrite( s2', 'out2.wav' );
