@@ -46,5 +46,6 @@ s = w*x;
 s1 = s(1,:);
 s2 = s(2,:);
 
+% Writes out the extracted sound signals into two different wav files.
 wavwrite( s1', 'out1.wav' );
 wavwrite( s2', 'out2.wav' );
