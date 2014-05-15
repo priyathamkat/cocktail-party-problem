@@ -3,7 +3,8 @@
 
 m = size(x1,1);
 n = 2;
-x = [x1';x2'];
+A = randn(n, n);
+x = A*[x1';x2'];
 c = cov(x');
 sq = inv(sqrtm(c));
 mx = mean(x, 2)';
