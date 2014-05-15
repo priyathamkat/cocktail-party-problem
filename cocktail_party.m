@@ -1,10 +1,16 @@
-[x1, Fs1] = wavread('mic1.wav');
-[x2, Fs2] = wavread('mic2.wav');
+[x1, Fs1] = wavread('mic1.wav'); 
+% Change the path to your first wav file.
+[x2, Fs2] = wavread('mic2.wav'); 
+% Change the path to your second wav file.
 
 m = size(x1,1);
 n = 2;
-A = randn(n, n);
+A = randn(n, n); 
+% A random matrix that linearly combines the sound  signals.
 x = A*[x1';x2'];
+
+
+% x is the input. If you already have a linear combination, like something from two microphones, feed it here.
 c = cov(x');
 sq = inv(sqrtm(c));
 mx = mean(x, 2)';
